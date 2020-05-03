@@ -38,17 +38,11 @@ module.exports = {
             },
             {
                 test: /\.(jpe?g|png|gif|svg)$/i,
-                use:[
-                    'file-loader',
-                    'img-loader',
-                    {
-                        loader: 'image-webpack-loader',
-                        options:{ 
-                            bypassOnDebug: true,
-                            disable:true,
-                        }
-                    },
-                ]
+                loader: "file-loader?name=/public/icons/[name].[ext]"
+
+            },
+            {   test: /\.(ogg|mp3|wav|mpe?g)$/i,
+                loader: 'file-loader',
             }
         ]
     },
