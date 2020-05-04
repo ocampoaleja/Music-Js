@@ -1,6 +1,7 @@
 var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 var devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
@@ -55,7 +56,10 @@ module.exports = {
         new MiniCssExtractPlugin({
             filename:devMode ? '[name].css' : '[name].[hash].css',
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
-        })
+        }),
+        new CopyPlugin([
+          { from: 'assets', to: 'assets' }
+        ]),
     ],
     stats:{
         children:false
